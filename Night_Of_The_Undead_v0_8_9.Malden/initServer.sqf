@@ -1,10 +1,4 @@
-//Copyright AWD | Dev
-
-DATABASE = ["new", "AWD_NOTU_DB"] call OO_INIDBI;
-["write", ["Test","Test",1]] call DATABASE;
-
-//Immediately determine the server operation behaviour
-execVM "Server_Scripts\serverRestartBehaviourDeterminer.sqf";
+//Author - Dev - a3devv3@gmail.com
 
 GAMESETTINGS setVariable ["ZombieDifficulty", 1, true]; //0 = Easy  |  1 = Normal  |  2 = Hard
 GAMESETTINGS setVariable ["PointsPerKill", 50, true]; //25 = Hard |  50 = Normal  |  100 Easy
