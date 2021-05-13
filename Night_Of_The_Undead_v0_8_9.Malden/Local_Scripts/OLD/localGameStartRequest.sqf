@@ -1,0 +1,1 @@
+[[name player],"Server_Scripts\serverGameStartRequestHandler.sqf"] remoteExec ["execVM",2];

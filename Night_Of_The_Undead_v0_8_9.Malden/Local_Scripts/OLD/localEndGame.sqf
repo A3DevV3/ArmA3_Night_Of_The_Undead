@@ -1,0 +1,21 @@
+["Terminate"] call BIS_fnc_EGSpectator;
+//[3] execVM "Local_Scripts\localPlaySound.sqf";
+_camera = "camera" camCreate getPos cam1pos1;
+_camera cameraEffect ["internal", "BACK"];
+_camera camSetTarget getPos cam1tar1;
+_camera camCommitPrepared 0;
+cutRsc ["GUI2000", "PLAIN"];
+_camera camSetTarget getPos cam1tar1;
+_camera camSetPos getPos cam1pos1;
+_camera camCommit 0;
+_camera camPrepareTarget getPos cam1tar2;
+_camera camPreparePos getPos cam1pos2;
+_camera camCommitPrepared 12.5;
+sleep 12.5;
+_camera camSetTarget getPos cam2tar1;
+_camera camSetPos getPos cam2pos1;
+_camera camCommit 0;
+_camera camPrepareTarget getPos cam2tar2;
+_camera camPreparePos getPos cam2pos2;
+_camera camCommitPrepared 12.5;
+

@@ -1,0 +1,86 @@
+author = "Dev | AWD";
+onLoadName = "Night of the Undead";
+OnLoadMission = "You do not remember who you are, what they are, or where they're from... You DO remember that you have a gun, and how to use it. Shoot first, ask questions later.";
+overviewText = "Shoot first. Ask questions later.";
+
+Respawn = 3;
+RespawnDelay = 4;
+
+enableDebugConsole[] = {"76561198055891340"};
+
+class CfgMusic
+{
+	music[] = {};
+    class Intro
+	{
+		// display name
+		name = "Intro";
+
+		// filename, volume, pitch
+		sound[]	= { "\SFX\intro.ogg", 3, 1};
+	};
+    class gameOver
+	{
+		// display name
+		name = "gameOver";
+
+		// filename, volume, pitch
+		sound[]	= { "\SFX\gameOver.ogg", 1, 1};
+	};
+};
+
+class CfgSounds
+{	
+	sounds[] = {};
+	class LobbyLoop
+	{
+		name = "LobbyLoop";
+		sound[] = {"\@A3\music_f_exp\Music\LeadTrack02_F_EXP.ogg", 1, 1};
+		titles[] = {};
+	};
+	class gameStart
+	{
+		name = "gameStart";
+		sound[] = {"SFX\gameStart.ogg", 1, 1};
+		titles[] = {};
+	};
+	class nextRound
+	{
+		name = "nextRound";
+		sound[] = {"SFX\nextRound.ogg", 1, 1};
+		titles[] = {};
+	};
+	class doorOpen
+	{
+		name = "doorOpen";
+		sound[] = {"SFX\doorOpen.ogg", 1, 1};
+		titles[] = {};
+	};
+	class mysteryBox
+	{
+		name = "mysteryBox";
+		sound[] = {"SFX\mysteryBox.ogg", 1, 1};
+		titles[] = {};
+	};
+	class power
+	{
+		name = "power";
+		sound[] = {"SFX\power.ogg", 1, 1};
+		titles[] = {};
+	};
+};
+
+#include "AWDxNOTU.hpp"
+#include "UI\defines.hpp"
+#include "UI\3000.hpp"
+
+class RscTitles 
+{
+	#include "UI\50.hpp"
+	#include "UI\1000.hpp"
+	#include "UI\2000.hpp"
+	#include "UI\9060.hpp"
+    #include "UI\9061.hpp"
+    #include "UI\9062.hpp"
+    #include "UI\9063.hpp"
+};

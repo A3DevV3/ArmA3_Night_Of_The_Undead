@@ -1,0 +1,1 @@
+[[_this select 0,_this select 1],"Server_Scripts\serverPlayerRegisterRequestHandler.sqf"] remoteExec ["execVM",2];
