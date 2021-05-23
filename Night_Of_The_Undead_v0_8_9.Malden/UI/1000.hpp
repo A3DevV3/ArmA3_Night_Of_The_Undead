@@ -338,7 +338,7 @@ class GUI1000 {
            sizeex = 0.05;
            colorbackground[] = {0,0,0,0};
            colortext[] = {1,1,1};
-           text = "-- Game Settings -- [Locked in public mode]";
+           text = "-- Game Settings -- [WIP]";
        };
        class RscStructuredText22
        {
@@ -413,7 +413,7 @@ class GUI1000 {
            sizeex = 0.05;
            colorbackground[] = {0,0,0,0};
            colortext[] = {1,1,1};
-           text = "By: Dev | Advanced Warfare Designs";
+           text = "By: Dev";
        };
        class RscStructuredText27
        {
@@ -488,7 +488,7 @@ class GUI1000 {
            sizeex = 0.05;
            colorbackground[] = {0,0,0,0};
            colortext[] = {1,1,1};
-           text = "Join us on teamspeak:  ts.rarvikings.com";
+           text = "";
        };
        class RscStructuredText32
        {

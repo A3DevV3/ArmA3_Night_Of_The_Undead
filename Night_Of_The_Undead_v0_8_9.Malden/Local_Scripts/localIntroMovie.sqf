@@ -22,7 +22,7 @@ then
 
 	sleep 1; //4
 	uiNamespace getVariable "Overlay" displayCtrl 1 ctrlSetTextColor [1, 1, 1, 1];
-	uiNamespace getVariable "Overlay" displayCtrl 1 ctrlSetText "Advanced Warfare Designs presents...";
+	uiNamespace getVariable "Overlay" displayCtrl 1 ctrlSetText "Dev (A3DevV3) presents...";
 	uiNamespace getVariable "Overlay" displayCtrl 1 ctrlShow true;
 		
 	call AWDxNOTU_fnc_LUIFRefreshGameSettings;
@@ -51,7 +51,7 @@ then
 	cutRsc ["GUI50", "BLACK"];
 	//Dev credit
 	uiNamespace getVariable "Overlay" displayCtrl 2 ctrlSetTextColor [1, 1, 1, 1];
-	uiNamespace getVariable "Overlay" displayCtrl 2 ctrlSetText "Dev [Project lead] [Programming]";
+	uiNamespace getVariable "Overlay" displayCtrl 2 ctrlSetText "An ArmA3 zombies experience";
 	uiNamespace getVariable "Overlay" displayCtrl 2 ctrlShow true;
 	
 	
@@ -77,7 +77,7 @@ then
 	cutRsc ["GUI50", "BLACK"];
 	//Rest credit
 	uiNamespace getVariable "Overlay" displayCtrl 2 ctrlSetTextColor [1, 1, 1, 1];
-	uiNamespace getVariable "Overlay" displayCtrl 2 ctrlSetText "Ace [Tester]     M. Mro [Tester]     Texas [Tester]     Chris [Tester]";
+	uiNamespace getVariable "Overlay" displayCtrl 2 ctrlSetText "With help from testers:	Ace     M. Mro     Texas     Chris";
 	uiNamespace getVariable "Overlay" displayCtrl 2 ctrlShow true;
 
 	sleep 1.5;
@@ -117,6 +117,12 @@ then
 	sleep 1;
 	LoadIcon = true;
 	execVM "Local_Scripts\localLoadingIcon.sqf";
+	if ((player getVariable "A3DevV3NOTUFirstTime") == 0)
+	then
+	{
+		profileNamespace setVariable ["A3DevV3NOTUFirstTime",1];
+	};
+	saveProfileNamespace;
 	sleep 2;
 	uiNamespace getVariable "Overlay" displayCtrl 1 ctrlShow false;
 	cutRsc ["GUI1000", "BLACK"];
