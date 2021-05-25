@@ -98,7 +98,7 @@ MysteryBoxLight2 allowDamage false;
 	};
 } forEach _papLights;
 
-//Set the map lights invulnerable so trolls can't shoot them out. Looking at you munk
+//Set the map lights invulnerable so players can't shoot them out.
 {
 	_x allowDamage false;
 } forEach _allLights;

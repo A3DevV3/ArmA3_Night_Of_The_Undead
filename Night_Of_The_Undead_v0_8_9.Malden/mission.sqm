@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={8194.2803,39.951538,10099.029};
-		dir[]={-0.84412152,-0.47353393,0.25155634};
-		up[]={-0.45397851,0.88068074,0.13529097};
-		aside[]={0.28560573,-6.1327592e-007,0.95837635};
+		pos[]={8068.1597,71.003807,10153.204};
+		dir[]={0.8536799,-0.41560248,-0.31385568};
+		up[]={0.39007521,0.90954632,-0.14341126};
+		aside[]={-0.34506837,7.4505806e-009,-0.93857765};
 	};
 };
 binarizationWanted=0;
@@ -337,6 +337,24 @@ class CustomAttributes
 		name="Multiplayer";
 		class Attribute0
 		{
+			property="RespawnTemplates";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"ARRAY"
+						};
+					};
+				};
+			};
+		};
+		class Attribute1
+		{
 			property="RespawnButton";
 			expression="true";
 			class Value
@@ -351,24 +369,6 @@ class CustomAttributes
 						};
 					};
 					value=0;
-				};
-			};
-		};
-		class Attribute1
-		{
-			property="RespawnTemplates";
-			expression="true";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"ARRAY"
-						};
-					};
 				};
 			};
 		};
@@ -5641,7 +5641,7 @@ class Mission
 			};
 			id=342;
 			type="Land_HistoricalPlaneDebris_02_F";
-			atlOffset=0.67573738;
+			atlOffset=0.67570305;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -6333,6 +6333,7 @@ class Mission
 			position[]={8200.5078,28.889999,10093.44};
 			class Attributes
 			{
+				name="zombieDetectArea";
 				sizeA=135;
 				sizeB=135;
 			};

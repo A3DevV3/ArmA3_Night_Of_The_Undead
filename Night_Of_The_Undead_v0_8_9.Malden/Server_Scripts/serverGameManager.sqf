@@ -14,18 +14,11 @@ _startWaitTimer = 0;
 while {ServerCurrentRound == -2}
 do
 {
-	_startWaitTimer = _startWaitTimer + 1;
-	[[_startWaitTimer],"Local_Scripts\localLobbyCountdown.sqf"] remoteExec ["execVM",0]; //Everywhere but server
-	if (_startWaitTimer > 120)
+	//_startWaitTimer = _startWaitTimer + 1;
+	//[[_startWaitTimer],"Local_Scripts\localLobbyCountdown.sqf"] remoteExec ["execVM",0]; //Everywhere but server
+	if (true) //This if-statement may seem redundant, but is artifact of old server based countdown system
 	then
 	{
-		//If 10 minutes has passed and a game has not been started, run serverRestart script to determine mission or server restart
-		if (_startWaitTimer > 600)
-		then
-		{
-			execVM "Server_Script\serverRestart.sqf";
-			_startWaitTimer = 0;
-		};
 		//Continually scan all players to get a count of how many are ready. How many are ready is stored by _tempMem2
 		_tempMem1 = count (call BIS_fnc_listPlayers);
 		_tempMem2 = 0;
@@ -65,38 +58,35 @@ do
 							[((call BIS_fnc_listPlayers) select (_x - 1))] execVM "Server_Scripts\serverSyncPlayerDataSend.sqf"; //Sync player variables to all other machines
 							///////////////////////////////////////////////////////////////
 						};
-									
-						_DBQuery = ["read", ["PlayerPresenceTable", getPlayerUID ((call BIS_fnc_listPlayers) select (_x - 1))]] call DATABASE;
-						if ((typeName _DBQuery) == "BOOL")
-						then
+						
 						{
-							[["There is a new player on server. Prologue will be shown..."],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
-							NewPlayerPresent = true;
-							["write", ["PlayerPresenceTable", getPlayerUID ((call BIS_fnc_listPlayers) select (_x - 1)),"Present"]] call DATABASE;
-						};
+							if (_x getVariable "A3DevV3NOTUFirstTime") then {NewPlayerPresent = true};
+						}
+						forEach allPlayers;
 					};
 				};
 						//////////////////////				
 					//1 player has indicated ready, start game
-					[["Player ready threshold reached. Starting game in 10"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
+					[["Player ready threshold reached."],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
+					[["Starting game in 10"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
 					sleep 1;
-					[["Player ready threshold reached. Starting game in 9"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
+					[["Starting game in 9"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
 					sleep 1;
-					[["Player ready threshold reached. Starting game in 8"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
+					[["Starting game in 8"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
 					sleep 1;
-					[["Player ready threshold reached. Starting game in 7"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
+					[["Starting game in 7"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
 					sleep 1;
-					[["Player ready threshold reached. Starting game in 6"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
+					[["Starting game in 6"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
 					sleep 1;
-					[["Player ready threshold reached. Starting game in 5"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
+					[["Starting game in 5"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
 					sleep 1;
-					[["Player ready threshold reached. Starting game in 4"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
+					[["Starting game in 4"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
 					sleep 1;
-					[["Player ready threshold reached. Starting game in 3"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
+					[["Starting game in 3"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
 					sleep 1;
-					[["Player ready threshold reached. Starting game in 2"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
+					[["Starting game in 2"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
 					sleep 1;
-					[["Player ready threshold reached. Starting game in 1"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
+					[["Starting game in 1"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
 					sleep 1;
 					
 						//Set all players with ready state to 1 at this moment to 2
@@ -147,37 +137,35 @@ do
 										///////////////////////////////////////////////////////////////
 									};
 								};
-								_DBQuery = ["read", ["PlayerPresenceTable", getPlayerUID ((call BIS_fnc_listPlayers) select (_x - 1))]] call DATABASE;
-								if ((typeName _DBQuery) == "BOOL")
-								then
+								
 								{
-									[["There is a new player on server. Prologue will be shown..."],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
-									NewPlayerPresent = true;
-									["write", ["PlayerPresenceTable", getPlayerUID ((call BIS_fnc_listPlayers) select (_x - 1)),"Present"]] call DATABASE;
-								};
+									if (_x getVariable "A3DevV3NOTUFirstTime") then {NewPlayerPresent = true};
+								}
+								forEach allPlayers;
 							};
 							//////////////////////
-						//Majority of players have indicated ready, start game
-						[["Player ready threshold reached. Starting game in 10"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
-						sleep 1;
-						[["Player ready threshold reached. Starting game in 9"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
-						sleep 1;
-						[["Player ready threshold reached. Starting game in 8"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
-						sleep 1;
-						[["Player ready threshold reached. Starting game in 7"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
-						sleep 1;
-						[["Player ready threshold reached. Starting game in 6"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
-						sleep 1;
-						[["Player ready threshold reached. Starting game in 5"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
-						sleep 1;
-						[["Player ready threshold reached. Starting game in 4"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
-						sleep 1;
-						[["Player ready threshold reached. Starting game in 3"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
-						sleep 1;
-						[["Player ready threshold reached. Starting game in 2"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
-						sleep 1;
-						[["Player ready threshold reached. Starting game in 1"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
-						sleep 1;
+							//Majority of players have indicated ready, start game
+							[["Player ready threshold reached."],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
+							[["Starting game in 10"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
+							sleep 1;
+							[["Starting game in 9"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
+							sleep 1;
+							[["Starting game in 8"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
+							sleep 1;
+							[["Starting game in 7"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
+							sleep 1;
+							[["Starting game in 6"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
+							sleep 1;
+							[["Starting game in 5"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
+							sleep 1;
+							[["Starting game in 4"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
+							sleep 1;
+							[["Starting game in 3"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
+							sleep 1;
+							[["Starting game in 2"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
+							sleep 1;
+							[["Starting game in 1"],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
+							sleep 1;
 						
 							//Set all players with ready state to 1 to 2
 							_tempMem1 = count (call BIS_fnc_listPlayers);
@@ -261,11 +249,9 @@ do
 sleep 1;
 waitUntil {ServerCurrentRound == 0};
 
-//systemChat "Loop 1";
-if (NewPlayerPresent)
+if (true)
 then
 {
-	//systemChat "Loop 2";
 	sleep 2;
 	introscenery1 hideObjectGlobal true;
 	introscenery2 hideObjectGlobal true;
@@ -307,9 +293,6 @@ for "_x" from 1 to 10 do
 		};
 	};
 };
-
-//Ensure the game starts at the correct day/night cycle time
-skipTime (20 - daytime + 24 ) % 24;// Skip forward to the correct mission time, irrespective of the current mission time
 
 MysteryBoxUseCount = 0;
 execVM "Server_Scripts\serverRoundManager.sqf";

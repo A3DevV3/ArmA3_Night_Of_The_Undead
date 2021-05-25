@@ -13,7 +13,7 @@ then
 else
 {
 	uiNamespace getVariable "Overlay" displayCtrl 28 ctrlSetTextColor [1, 1, 1, 1];
-	uiNamespace getVariable "Overlay" displayCtrl 28 ctrlSetText (format ["Intermission will end in %1 seconds...",(120 -_timeRemaining)]);
+	uiNamespace getVariable "Overlay" displayCtrl 28 ctrlSetText (format ["Intermission will end in %1 seconds...",(10 -_timeRemaining)]);
 	uiNamespace getVariable "Overlay" displayCtrl 28 ctrlShow true;
 	uiNamespace getVariable "Overlay" displayCtrl 31 ctrlShow false;
 };

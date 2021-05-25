@@ -5,11 +5,8 @@ GAMESETTINGS setVariable ["PointsPerKill", 50, true]; //25 = Hard |  50 = Normal
 GAMESETTINGS setVariable ["MachineGunsEnabled", true, true]; //Default = true
 GAMESETTINGS setVariable ["SpecialWeaponsEnabled", true, true]; //Default = true
 
-//Execute the kick manager
-execVM "Server_Scripts\KickManager.sqf";
-
-//GLOBAL-LOCAL VARIABLES - These are variables global to the client, but not synced to/from the network
-ActiveZombies = 0; //Used by serverRoundManager.sqf. Putting here so its defined before EH
+//GLOBAL-LOCAL VARIABLES - These are variables global to the server instance, but not synced to/from the network
+ActiveZombies = 0; //Used by serverRoundManager.sqf. It must be defined before EH
 MysteryBoxActive = 0; //Used to keep track on whether the mystery box is in use or not
 NewPlayerPresent = false;
 ZombieGroup = createGroup [east,false];
@@ -24,6 +21,7 @@ FuelCan3Mobile = false;
 GeneratorFuelCount = 0;
 SatchelCount = 0;
 
+//Configure aspects of the mission related to PAP
 execVM "Server_Scripts\setupPAP.sqf";
 		
 //Setup weapons database as it configures global-local variable WEAPONSDB
@@ -38,7 +36,7 @@ MysteryBoxLocation = 1;
 OpenAreas = ["Zone1"];
 MaxRound = 0;
 
-//For subtrating active zombie count whenever a zombie is killed
+//For subtracting active zombie count whenever a zombie is killed
 addMissionEventHandler ["EntityKilled",
 {
 	params ["_killed", "_killer", "_instigator"];

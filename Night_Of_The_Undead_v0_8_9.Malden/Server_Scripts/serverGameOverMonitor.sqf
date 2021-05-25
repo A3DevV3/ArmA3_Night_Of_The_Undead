@@ -20,9 +20,16 @@ do
 		[[format ["All players are dead. Game over. You've made it %1 rounds.",ServerCurrentRound]],"Local_Scripts\localSystemChat.sqf"] remoteExec ["execVM",0];
 		MaxRound = ServerCurrentRound;
 		execVM "Server_Scripts\syncServerDataSend.sqf"; //Syncs ServerCurrentRound MysteryBoxLocation and OpenAreas to all clients
-		[[MaxRound],"Local_Scripts\localGameOver.sqf"] remoteExec ["execVM",-2]; //Executes on all machines
-		sleep 30; //Give players time to watch the game over camera work
+		[[MaxRound],"Local_Scripts\localGameOver.sqf"] remoteExec ["execVM",0]; //Executes on all machines except serverCommand
+		//Hide all players
+		{
+			_x hideObjectGlobal true;
+			_x allowDamage false;
+		}
+		forEach allPlayers;
+		sleep 25; //Give players time to watch the game over camera work
 		execVM "Server_Scripts\serverRestart.sqf";
+		sleep 1;
 	};
 		
 	_zombiesTargetsList= [];

@@ -91,21 +91,21 @@ private
 	removeHeadgear _thisZombie;
 	removeGoggles _thisZombie;
 	
-	if (ServerCurrentRound > 21)
+	if (ServerCurrentRound > 8)
 	then
 	{
 		_thisZombie addVest "V_PlateCarrier2_blk";
 	}
 	else
 	{
-		if (ServerCurrentRound > 16)
+		if (ServerCurrentRound > 5)
 		then
 		{
 			_thisZombie addVest "V_PlateCarrierL_CTRG";
 		}
 		else
 		{
-			if (ServerCurrentRound > 7)
+			if (ServerCurrentRound > 3)
 			then
 			{
 			_thisZombie addVest "V_TacVestIR_blk";
