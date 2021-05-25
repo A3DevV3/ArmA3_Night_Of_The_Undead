@@ -1,4 +1,4 @@
-version=53;
+version=54;
 class EditorData
 {
 	moveGridStep=1;
@@ -16,13 +16,14 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={8178.3813,39.099247,10113.606};
-		dir[]={-0.77980065,-0.56909686,0.26094836};
-		up[]={-0.53983265,0.82215881,0.18064763};
-		aside[]={0.3173472,-5.8265869e-007,0.94833803};
+		pos[]={8194.2803,39.951538,10099.029};
+		dir[]={-0.84412152,-0.47353393,0.25155634};
+		up[]={-0.45397851,0.88068074,0.13529097};
+		aside[]={0.28560573,-6.1327592e-007,0.95837635};
 	};
 };
 binarizationWanted=0;
+sourceName="Night_Of_The_Undead_v0_8_9";
 addons[]=
 {
 	"A3_Data_F_ParticleEffects",
@@ -251,7 +252,7 @@ class AddonsMetaData
 		class Item24
 		{
 			className="A3_Props_F_Enoch";
-			name="Arma 3 Enoch - Decorative and Mission Objects";
+			name="Arma 3 Contact Platform - Decorative and Mission Objects";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -299,6 +300,16 @@ class AddonsMetaData
 		};
 	};
 };
+dlcs[]=
+{
+	"Expansion",
+	"Argo",
+	"Tank",
+	"ORANGE",
+	"Enoch",
+	"Curator",
+	"Heli"
+};
 randomSeed=13384533;
 class ScenarioData
 {
@@ -326,24 +337,6 @@ class CustomAttributes
 		name="Multiplayer";
 		class Attribute0
 		{
-			property="RespawnTemplates";
-			expression="true";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"ARRAY"
-						};
-					};
-				};
-			};
-		};
-		class Attribute1
-		{
 			property="RespawnButton";
 			expression="true";
 			class Value
@@ -358,6 +351,24 @@ class CustomAttributes
 						};
 					};
 					value=0;
+				};
+			};
+		};
+		class Attribute1
+		{
+			property="RespawnTemplates";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"ARRAY"
+						};
+					};
 				};
 			};
 		};
@@ -554,7 +565,7 @@ class Mission
 			};
 			id=9;
 			type="CraterLong";
-			atlOffset=0.0009727478;
+			atlOffset=0.00096321106;
 		};
 		class Item7
 		{
@@ -1589,6 +1600,7 @@ class Mission
 			};
 			id=61;
 			type="Land_City_8m_F";
+			atlOffset=0.0091667175;
 		};
 		class Item22
 		{
@@ -1604,7 +1616,7 @@ class Mission
 			};
 			id=62;
 			type="Land_City_8m_F";
-			atlOffset=1.9073486e-006;
+			atlOffset=0.0013580322;
 		};
 		class Item23
 		{
@@ -2532,6 +2544,7 @@ class Mission
 			};
 			id=136;
 			type="CraterLong";
+			atlOffset=9.5367432e-006;
 		};
 		class Item63
 		{
@@ -2802,12 +2815,13 @@ class Mission
 				angles[]={0,4.783452,0};
 			};
 			side="Empty";
-			flags=5;
+			flags=1;
 			class Attributes
 			{
 			};
 			id=149;
 			type="Land_WoodenWall_01_m_pole_F";
+			atlOffset=0.25802231;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -4470,7 +4484,7 @@ class Mission
 			init="hideObject ([0,0,0] nearestObject 167567);";
 			id=250;
 			type="Logic";
-			atlOffset=0.00037574768;
+			atlOffset=0.00039672852;
 		};
 		class Item138
 		{
@@ -5249,7 +5263,7 @@ class Mission
 			init="hideObject ([0,0,0] nearestObject 168738);";
 			id=289;
 			type="Logic";
-			atlOffset=5.7220459e-005;
+			atlOffset=0.052000046;
 		};
 		class Item158
 		{
@@ -5592,7 +5606,7 @@ class Mission
 			};
 			id=311;
 			type="Land_WoodenWall_01_m_pole_F";
-			atlOffset=0.76330948;
+			atlOffset=0.76331139;
 		};
 		class Item166
 		{
@@ -5609,7 +5623,7 @@ class Mission
 			};
 			id=312;
 			type="Land_WoodenWall_01_m_pole_F";
-			atlOffset=0.68117142;
+			atlOffset=0.68117332;
 		};
 		class Item167
 		{
@@ -5627,7 +5641,7 @@ class Mission
 			};
 			id=342;
 			type="Land_HistoricalPlaneDebris_02_F";
-			atlOffset=0.67570305;
+			atlOffset=0.67573738;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -5955,7 +5969,7 @@ class Mission
 			};
 			id=352;
 			type="Land_WoodenCrate_01_F";
-			atlOffset=0.62792587;
+			atlOffset=0.62791443;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -5996,7 +6010,7 @@ class Mission
 			};
 			id=355;
 			type="Land_WoodenCrate_01_stack_x5_F";
-			atlOffset=0.00035095215;
+			atlOffset=0.0003528595;
 		};
 		class Item177
 		{
@@ -6824,7 +6838,7 @@ class Mission
 			};
 			id=410;
 			type="Land_WoodenWall_01_m_pole_F";
-			atlOffset=0.00013160706;
+			atlOffset=0.0001335144;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -6865,7 +6879,7 @@ class Mission
 			};
 			id=411;
 			type="Land_WoodenWall_01_m_pole_F";
-			atlOffset=0.26495552;
+			atlOffset=0.26450348;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -6906,7 +6920,7 @@ class Mission
 			};
 			id=412;
 			type="Land_WoodenWall_01_m_pole_F";
-			atlOffset=0.27413177;
+			atlOffset=0.27413368;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -6947,7 +6961,7 @@ class Mission
 			};
 			id=413;
 			type="Land_WoodenWall_01_m_pole_F";
-			atlOffset=0.33321571;
+			atlOffset=0.33321762;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -6988,7 +7002,7 @@ class Mission
 			};
 			id=414;
 			type="Land_WoodenWall_01_m_pole_F";
-			atlOffset=0.23759079;
+			atlOffset=0.2375927;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -7055,6 +7069,7 @@ class Mission
 			type="rectangle";
 			angle=194.92395;
 			id=422;
+			atlOffset=1.9073486e-006;
 		};
 		class Item212
 		{
@@ -7380,6 +7395,7 @@ class Mission
 			};
 			id=446;
 			type="EmptyDetector";
+			atlOffset=3.8146973e-006;
 		};
 		class Item224
 		{
@@ -7928,6 +7944,7 @@ class Mission
 			type="rectangle";
 			angle=194.92395;
 			id=474;
+			atlOffset=1.9073486e-006;
 		};
 		class Item246
 		{
@@ -7936,7 +7953,7 @@ class Mission
 			name="zbreach10";
 			type="Empty";
 			id=478;
-			atlOffset=0.00071334839;
+			atlOffset=0.00071525574;
 		};
 		class Item247
 		{
@@ -8005,7 +8022,7 @@ class Mission
 			};
 			id=482;
 			type="EmptyDetector";
-			atlOffset=0.00029945374;
+			atlOffset=0.00030136108;
 		};
 		class Item251
 		{
@@ -8638,7 +8655,7 @@ class Mission
 			};
 			id=498;
 			type="Land_WoodenWall_01_m_pole_F";
-			atlOffset=0.64385796;
+			atlOffset=0.64385986;
 		};
 		class Item267
 		{
@@ -8656,7 +8673,7 @@ class Mission
 			};
 			id=499;
 			type="Land_WoodenWall_01_m_pole_F";
-			atlOffset=0.31034088;
+			atlOffset=0.31034279;
 		};
 		class Item268
 		{
@@ -8674,7 +8691,7 @@ class Mission
 			};
 			id=500;
 			type="Land_WoodenWall_01_m_pole_F";
-			atlOffset=0.54911232;
+			atlOffset=0.54911423;
 		};
 		class Item269
 		{
@@ -8692,7 +8709,7 @@ class Mission
 			};
 			id=501;
 			type="Land_WoodenWall_01_m_pole_F";
-			atlOffset=0.58434105;
+			atlOffset=0.58434296;
 		};
 		class Item270
 		{
@@ -8710,7 +8727,7 @@ class Mission
 			};
 			id=502;
 			type="Land_WoodenWall_01_m_pole_F";
-			atlOffset=0.93346786;
+			atlOffset=0.93346977;
 		};
 		class Item271
 		{
@@ -9875,6 +9892,7 @@ class Mission
 			};
 			id=572;
 			type="Land_InvisibleBarrier_F";
+			atlOffset=1.9073486e-006;
 		};
 		class Item302
 		{
@@ -9891,6 +9909,7 @@ class Mission
 			};
 			id=573;
 			type="Land_InvisibleBarrier_F";
+			atlOffset=1.9073486e-006;
 		};
 		class Item303
 		{
@@ -9907,6 +9926,7 @@ class Mission
 			};
 			id=574;
 			type="Land_InvisibleBarrier_F";
+			atlOffset=1.9073486e-006;
 		};
 		class Item304
 		{
@@ -9923,6 +9943,7 @@ class Mission
 			};
 			id=575;
 			type="Land_InvisibleBarrier_F";
+			atlOffset=1.9073486e-006;
 		};
 		class Item305
 		{
@@ -9953,7 +9974,7 @@ class Mission
 			name="MysteryBoxWeaponPos1";
 			id=581;
 			type="Logic";
-			atlOffset=0.57377625;
+			atlOffset=0.57378578;
 		};
 		class Item307
 		{
@@ -10046,7 +10067,7 @@ class Mission
 			};
 			id=603;
 			type="Land_InvisibleBarrier_F";
-			atlOffset=0.029058456;
+			atlOffset=0.029060364;
 		};
 		class Item314
 		{
@@ -10064,7 +10085,7 @@ class Mission
 			};
 			id=604;
 			type="Land_InvisibleBarrier_F";
-			atlOffset=0.035013199;
+			atlOffset=0.035015106;
 		};
 		class Item315
 		{
@@ -10082,7 +10103,7 @@ class Mission
 			};
 			id=605;
 			type="Land_InvisibleBarrier_F";
-			atlOffset=0.040317535;
+			atlOffset=0.040319443;
 		};
 		class Item316
 		{
@@ -10755,7 +10776,7 @@ class Mission
 			};
 			id=356;
 			type="Land_WoodenCrate_01_stack_x5_F";
-			atlOffset=3.0517578e-005;
+			atlOffset=3.2424927e-005;
 		};
 		class Item333
 		{
@@ -10776,7 +10797,7 @@ class Mission
 			};
 			id=447;
 			type="EmptyDetector";
-			atlOffset=0.0098400116;
+			atlOffset=0.0098419189;
 		};
 		class Item334
 		{
@@ -12153,7 +12174,7 @@ class Mission
 			};
 			id=765;
 			type="SatchelCharge_F";
-			atlOffset=0.097629547;
+			atlOffset=0.097673416;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -14335,7 +14356,7 @@ class Mission
 			};
 			id=905;
 			type="EmptyDetector";
-			atlOffset=5.4301682;
+			atlOffset=5.4301701;
 		};
 		class Item470
 		{
@@ -14389,7 +14410,7 @@ class Mission
 			};
 			id=908;
 			type="EmptyDetector";
-			atlOffset=0.0016384125;
+			atlOffset=0.0016441345;
 		};
 		class Item473
 		{
@@ -14577,7 +14598,7 @@ class Mission
 			};
 			id=919;
 			type="EmptyDetector";
-			atlOffset=3.2847919;
+			atlOffset=3.28479;
 		};
 		class Item484
 		{
@@ -15668,7 +15689,7 @@ class Mission
 			name="introcampos31";
 			id=989;
 			type="Logic";
-			atlOffset=1.4891644;
+			atlOffset=1.4891663;
 		};
 		class Item531
 		{
@@ -17045,7 +17066,7 @@ class Mission
 			name="MysteryBoxWeaponPos2";
 			id=1054;
 			type="Logic";
-			atlOffset=0.58899879;
+			atlOffset=0.58900833;
 		};
 		class Item587
 		{
@@ -17672,7 +17693,7 @@ class Mission
 			name="gOCam2Pos1";
 			id=1088;
 			type="Logic";
-			atlOffset=5.5162926;
+			atlOffset=5.5162888;
 		};
 		class Item616
 		{

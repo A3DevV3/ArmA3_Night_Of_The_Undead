@@ -1,12 +1,32 @@
 //Copyright AWD | Dev
-systemChat "ArmA3 AWD Zombies Version 0.8.9 P2 | Copyright © AWD - Dev";
+systemChat "ArmA3 Zombies Version 0.8.9 P2 | Copyright © - Dev";
 systemChat "AWDZ executing local scripts";
 
 private ["_eventHandlerReference","_camera"];
 
 //Set variables to the player's worldspace character
-player setVariable ["PlayerName", name player, true]; //This is the ONLY player attached variable that is synced to the network
-player setVariable ["PlayerScore", 500, false];
+//We need to watch our bandwidth with variable synchronization and client-client/client-host/host-client data transmission
+//Main reason for this is because we already have a lot of processing overhead on the host's part for zombie AI
+player setVariable ["PlayerName", name player, true]; //This is 1 of 2 ONLY player attached variables that are synced to the network
+
+diag_log "watch here";
+//profileNamespace setVariable ["A3DevV3NOTUFirstTime",1];
+diag_log (profileNamespace getVariable "A3DevV3NOTUFirstTime");
+
+/*
+if (isNil (profileNamespace getVariable "A3DevV3NOTUFirstTime"))
+then
+{
+	player setVariable ["PlayerFirstTime", true, true]; //This is 2 of 2 ONLY player attached variables that are synced to the network
+	diag_log "trying to save";
+}
+else 
+{
+	player setVariable ["PlayerFirstTime", false, true]; //This is 2 of 2 ONLY player attached variables that are synced to the network
+};
+*/
+
+player setVariable ["PlayerScore", 10000, false];
 player setVariable ["PlayerReady", 0, false];
 player setVariable ["PlayerRespawnWaiting", false, false];
 player setVariable ["VotedKickAgainst", [], false];
@@ -19,16 +39,16 @@ player setVariable ["HasFuel", false, false];
 player setVariable ["HasPAPWeap", false, false];
 
 //DATA SYNC BLOCK//////////////////////////////////////////////
-//When player is initializing, define player vars for everyone else
+//When player is initializing, define player's local vars for everyone else. This is the method for defining player variables for new players.
 execVM "Local_Scripts\syncPlayerDataSend.sqf"; //Sync player variables to all other machines and server
 ///////////////////////////////////////////////////////////////
 		
-//Hide the player and make them invulnerable
-player allowDamage false;
-[[getPlayerUID player,true],"Server_Scripts\serverHidePlayer.sqf"] remoteExec ["execVM",2]; //Executes on server only
-player enableFatigue false;
+//Hide the player and make them invulnerable. We don't make them visible and vulnerable until the game has started and they are ready to play
+player allowDamage false; //Executed locally
+[[getPlayerUID player,true],"Server_Scripts\serverHidePlayer.sqf"] remoteExec ["execVM",2]; //Executes on server only and uses the hideObjectGlobal command. Boolean argument is to make invisible/visible
+player enableFatigue false; //Execute locally
 
-//GLOBAL-LOCAL VARIABLES - These are variables global to the client, but not synced to/from the network
+//LGLOBAL VARIABLES - These are variables global to the client, but not synced to/from the network. These variables can be used across client-side scripts and are not confined to the execution scope of any single script
 	//-------------\\
 	RefreshUI = false;
 	LoopSoundState = 0; //0 -> No sound is looping    1 -> Sound is looping   2 -> Issue request to localLoopSound to stop sound loop
@@ -40,13 +60,14 @@ player enableFatigue false;
 	WindowRepairCooldown = 0;
 	WindowRepairCount = 0;
 	
+	//The player does not start with any firearms, they must buy a weapon off the wall if they wish to start with one
 	DefaultLoadout = [[],[],[],["U_B_CombatUniform_mcam",[["FirstAidKit",2],["HandGrenade",2,1]]],["V_Chestrig_rgr",[]],["B_Carryall_oli",[]],"H_HelmetSpecB_blk","",[],["","","","","",""]];
 
 	//Will have format ["3ClassType",PAPBoolean,[UnitLoadoutArray],[WeaponsDBEntry],weapon Classname,backpack Inventory,activeMagBulletCount
 	PlayerWeaponSlot1 = ["",false,[],[],"",0];
 	PlayerWeaponSlot2 = ["",false,[],[],"",0];
 
-//Setup weapons database as it configures global-local variable WEAPONSDB
+//Setup weapons database as it configures LGlobal variable WEAPONSDB
 execVM "Local_Scripts\localConfigureWeaponsDatabase.sqf";
 
 //SYNCHRONIZED GLOBAL VARIABLES - These are variables global to the client, and also synced from the network
@@ -57,6 +78,9 @@ MaxRound = 0;
 
 //Initialize UI manager now that the required memory elements have been initialized
 execVM "Local_Scripts\localUIManager.sqf";
+
+//Start the local Zombie hit detection manager, zombHitM, which is responsible for fast series hit detection and score rewarding
+execVM "Local_Scripts\localZombHitMan.sqf";
 
 //Locally add scores for players when they kill a zombie
 addMissionEventHandler ["EntityKilled",
