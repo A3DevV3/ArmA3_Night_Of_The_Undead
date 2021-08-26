@@ -3,7 +3,7 @@
 Night of the Undead is intended to be a full implementation of the well known zombies mode from the Call of Duty game series into ArmA III.
 
 Github Repository
-https://github.com/A3DevV2/ArmA3_Night_Of_The_Undead
+https://github.com/A3DevV3/ArmA3_Night_Of_The_Undead
 
 Steam Workshop Page:
 https://steamcommunity.com/sharedfiles/filedetails/?id=1735721757
